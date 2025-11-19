@@ -152,56 +152,56 @@ $(function() {
                             }, "json");
                             }
                             function getFormularioEdicao(jsonDado) {
-                            var form = '<form class="form-horizontal">';
-                            $
-                            .each(
-                            jsonDado,
-                            function(indice, contato) {
-                            form += '<div class="form-group">';
-                            form += '<input type="hidden" id="contato_id" value="'
-                            + contato.id + '">';
-                            form += '<label for="nome" class="col-sm-2 control-label glyphicon glyphicon-user"></label>';
-                            form += '<div class="col-sm-8">';
-                            form += '<input type="text" class="form-control" id="nome" placeholder="Nome*" value="'
-                            + contato.nome + '" required>';
-                            form += '</div>';
-                            form += '</div>';
-                            form += '<div class="form-group">';
-                            form += '<label for="telefone" class="col-sm-2 control-label glyphicon glyphiconphone"></label>';
-                            form += '<div class="col-sm-8">';
-                            form += '<input type="tel" class="form-control" id="telefone" placeholder="Telefone" value="'
-                            + contato.telefone + '">';
-                            form += '</div>';
-                            form += '</div>';
-                            form += '<div class="form-group">';
-                            form += '<label for="email" class="col-sm-2 control-label glyphicon glyphiconenvelope"></label>';
-                            form += '<div class="col-sm-8">';
-                            form += '<input type="email" class="form-control" id="email" placeholder="E-mail" value="'
-                            + contato.email + '">';
-                            form += '</div>';
-                            form += '</div>';
-                            form += '<div class="form-group">';
-                            form += '<label for="endereco" class="col-sm-2 control-label glyphicon glyphicon-home"></label>';
-                            form += '<div class="col-sm-8">';
-                            form += '<textarea class="form-control" rows="3" id="endereco" placeholder="Endereço">'
-                            + contato.site + '">';
-                            form += '</div>';
-                            form += '</div>';
-                             form += '<div class="form-group">';
-                            form += '<label for="site" class="col-sm-2 control-label glyphicon glyphicon-globe"></label>';
-                            form += '<div class="col-sm-8">';
-                            form += '<input type="text" class="form-control" id="site" placeholder="Site" value="' + (contato.site || '') + '">';
-                            + contato.endereco + '</textarea>';
-                            form += '</div>';
-                            form += '</div>';
-                            form += '<div class="form-group">';
-                            form += '<div class="col-sm-offset-2 col-sm-10">';
-                            form += '<button type="button" id="salvar_contato_edicao" class="btn btnprimary">Salvar</button>';
-                            form += '</div>';
-                            form += '</div>';
-                            });
-                            form += '</form>';
-                            $('div#conteudo').html(form);
+                                var form = '<form class="form-horizontal">';
+                                $.each(jsonDado, function(indice, contato) {
+                                    form += '<div class="form-group">';
+                                    form += '<input type="hidden" id="contato_id" value="' + contato.id + '">';
+                                    
+                                    form += '<label for="nome" class="col-sm-2 control-label glyphicon glyphicon-user"></label>';
+                                    form += '<div class="col-sm-8">';
+                                    form += '<input type="text" class="form-control" id="nome" placeholder="Nome*" value="' + contato.nome + '" required>';
+                                    form += '</div>';
+                                    form += '</div>';
+                                    
+                                    form += '<div class="form-group">';
+                                    form += '<label for="telefone" class="col-sm-2 control-label glyphicon glyphiconphone"></label>';
+                                    form += '<div class="col-sm-8">';
+                                    form += '<input type="tel" class="form-control" id="telefone" placeholder="Telefone" value="' + contato.telefone + '">';
+                                    form += '</div>';
+                                    form += '</div>';
+                                    
+                                    form += '<div class="form-group">';
+                                    form += '<label for="email" class="col-sm-2 control-label glyphicon glyphiconenvelope"></label>';
+                                    form += '<div class="col-sm-8">';
+                                    form += '<input type="email" class="form-control" id="email" placeholder="E-mail" value="' + contato.email + '">';
+                                    form += '</div>';
+                                    form += '</div>';
+                                    
+                                    
+                                    form += '<div class="form-group">';
+                                    form += '<label for="endereco" class="col-sm-2 control-label glyphicon glyphicon-home"></label>';
+                                    form += '<div class="col-sm-8">';
+                                    form += '<textarea class="form-control" rows="3" id="endereco" placeholder="Endereço">' + contato.endereco + '</textarea>';
+                                    form += '</div>';
+                                    form += '</div>';
+                                    
+                                  
+                                    form += '<div class="form-group">';
+                                    form += '<label for="site" class="col-sm-2 control-label glyphicon glyphicon-globe"></label>';
+                                    form += '<div class="col-sm-8">';
+                                    form += '<input type="text" class="form-control" id="site" placeholder="Site" value="' + (contato.site || '') + '">';
+                                    form += '</div>';
+                                    form += '</div>';
+                                    
+                                   
+                                    form += '<div class="form-group">';
+                                    form += '<div class="col-sm-offset-2 col-sm-10">';
+                                    form += '<button type="button" id="salvar_contato_edicao" class="btn btn-primary">Salvar</button>';
+                                    form += '</div>';
+                                    form += '</div>';
+                                });
+                                form += '</form>';
+                                $('div#conteudo').html(form);
                             }
                             function salvarContatoEdicao() {
                             $('#carregando').show();
@@ -210,6 +210,7 @@ $(function() {
                             Contato.nome = $('input#nome').val();
                             Contato.telefone = $('input#telefone').val();
                             Contato.email = $('input#email').val();
+                            Contato.site = $('input#site').val();
                             Contato.endereco = $('textarea#endereco').val();
                             var contatoJson = JSON.stringify(Contato);
                             $.post('crud.php', {
